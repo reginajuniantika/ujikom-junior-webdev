@@ -30,7 +30,7 @@ id="sidenav-main">
 
 
         <li class="nav-item">
-            <a class="nav-link text-white " href="./profile.html">
+            <a class="nav-link text-white " href="{{ route('pegawai.index')}}">
 
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">person</i>
@@ -41,7 +41,7 @@ id="sidenav-main">
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-white " href="./profile.html">
+            <a class="nav-link text-white " href="{{ route('logout')}}">
 
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fas fa-sign-out-alt"></i>
