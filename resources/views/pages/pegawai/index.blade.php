@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    <div class="d-flex align-items-center justify-content-between"></div>
     <h3>Pegawai</h3>
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal" <i class="fas fa-plus"></i> Tambah
+        Pegawai
+    </button>
 
     <table id="table-pegawai" class="table table-hover table-striped">
         <thead>
@@ -44,6 +48,26 @@
 
         </tbody>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @push('css')
