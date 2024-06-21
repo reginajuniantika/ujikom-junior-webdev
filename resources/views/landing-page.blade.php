@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - Day Bootstrap Template</title>
+    <title>UJIKOM WEB DEVELOP</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -42,7 +42,7 @@
 
     <header id="header" class="header fixed-top">
 
-        <div class="topbar d-flex align-items-center">
+        {{-- <div class="topbar d-flex align-items-center">
             <div class="container d-flex justify-content-center justify-content-md-between">
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope d-flex align-items-center"><a
@@ -56,7 +56,7 @@
                     <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
-        </div><!-- End Top Bar -->
+        </div><!-- End Top Bar --> --}}
 
         <div class="branding d-flex align-items-center">
 
