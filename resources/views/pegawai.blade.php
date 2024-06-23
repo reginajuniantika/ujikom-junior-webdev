@@ -9,41 +9,41 @@
     </div>
 
     <div class="table-responsive">
-        <table id="table-pegawai" class="table table-hover table-striped">
+        <table id="myTable" class="table table-hover table-striped border">
             <thead>
-                <tr>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">No HP</th>
-                    <th scope="col">Aksi</th>
+                <tr class="border">
+                    <th scope="col" class="border">Foto</th>
+                    <th scope="col" class="border">Nama</th>
+                    <th scope="col" class="border">Email</th>
+                    <th scope="col" class="border">No HP</th>
+                    <th scope="col" class="border">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($employees as $pegawai)
-                    <tr>
-                        <td>
+                    <tr class="border">
+                        <td class="border">
                             @if ($pegawai->photo == null)
                                 <span class="badge bg-danger">Tidak Ada Foto</span>
                             @else
-                                <img class="img-thumbnail" src="{{ asset('images/' . $pegawai->photo) }}"
+                                <img class="img-thumbnail border" src="{{ asset('images/' . $pegawai->photo) }}"
                                     alt="{{ $pegawai->name }}" width="50">
                             @endif
                         </td>
-                        <td>{{ $pegawai->name }}</td>
-                        <td>{{ $pegawai->email }}</td>
-                        <td>{{ $pegawai->phone_number }}</td>
-                        <td>
+                        <td class="border">{{ $pegawai->name }}</td>
+                        <td class="border">{{ $pegawai->email }}</td>
+                        <td class="border">{{ $pegawai->phone_number }}</td>
+                        <td class="border">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-success border" data-bs-toggle="modal"
                                     data-bs-target="#detailModal{{ $pegawai->id }}">
                                     <i class="fas fa-info-circle"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-warning border" data-bs-toggle="modal"
                                     data-bs-target="#editModal{{ $pegawai->id }}">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-danger border" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal{{ $pegawai->id }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -55,7 +55,7 @@
         </table>
     </div>
 
-    <!-- Add Modal -->
+    {{-- Modal Add --}}
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -110,7 +110,8 @@
                         <div class="form-group mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control border px-3 @error('alamat') is-invalid @enderror"
-                                id="alamat" name="alamat" placeholder="Masukkan Alamat" value="{{ old('alamat') }}">
+                                id="alamat" name="alamat" placeholder="Masukkan Alamat"
+                                value="{{ old('alamat') }}">
                             @error('alamat')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -143,9 +144,8 @@
             </div>
         </div>
     </div>
-    <!-- Edit Modal -->
 
-    {{-- Detail Modal --}}
+    {{-- Modal Detail --}}
     @foreach ($employees as $pegawai)
         <div class="modal fade" id="detailModal{{ $pegawai->id }}" tabindex="-1" aria-labelledby="editModalLabel"
             aria-hidden="true">
@@ -185,7 +185,8 @@
             </div>
         </div>
     @endforeach
-    <!-- Delete Modal -->
+
+    {{-- Modal Delete --}}
     @foreach ($employees as $pegawai)
         <div class="modal fade" id="deleteModal{{ $pegawai->id }}" tabindex="-1"
             aria-labelledby="deleteModalLabel-{{ $pegawai->id }}" aria-hidden="true">
@@ -213,6 +214,7 @@
         </div>
     @endforeach
 
+    {{-- Modal Edit --}}
     @foreach ($employees as $pegawai)
         <div class="modal fade" id="editModal{{ $pegawai->id }}" tabindex="-1"
             aria-labelledby="editModalLabel-{{ $pegawai->id }}" aria-hidden="true">
@@ -251,39 +253,49 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama</label>
-                                <input type="text" class="form-control @error('nameupdate') is-invalid @enderror" id="name" name="nameupdate" value="{{ $pegawai->name }}" required>
+                                <input type="text" class="form-control @error('nameupdate') is-invalid @enderror"
+                                    id="name" name="nameupdate" value="{{ $pegawai->name }}" required>
                                 @error('nameupdate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control @error('emailupdate') is-invalid @enderror" id="email" name="emailupdate" value="{{ $pegawai->email }}" required>
+                                <input type="email" class="form-control @error('emailupdate') is-invalid @enderror"
+                                    id="email" name="emailupdate" value="{{ $pegawai->email }}" required>
                                 @error('emailupdate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label">No HP</label>
-                                <input type="text" class="form-control @error('phone_numberupdate') is-invalid @enderror" id="phone_number" name="phone_numberupdate" value="{{ $pegawai->phone_number }}" required>
+                                <input type="text"
+                                    class="form-control @error('phone_numberupdate') is-invalid @enderror"
+                                    id="phone_number" name="phone_numberupdate" value="{{ $pegawai->phone_number }}"
+                                    required>
                                 @error('phone_numberupdate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control @error('alamatupdate') is-invalid @enderror" id="alamat" name="alamatupdate" value="{{ $pegawai->alamat }}" required>
+                                <input type="text" class="form-control @error('alamatupdate') is-invalid @enderror"
+                                    id="alamat" name="alamatupdate" value="{{ $pegawai->alamat }}" required>
                                 @error('alamatupdate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="domisili" class="form-label">Domisili</label>
-                                <select class="form-select @error('domisiliupdate') is-invalid @enderror" id="domisili" name="domisiliupdate" required>
+                                <select class="form-select @error('domisiliupdate') is-invalid @enderror" id="domisili"
+                                    name="domisiliupdate" required>
                                     <option value="">Pilih Domisili</option>
-                                    <option value="Jawa Timur" {{ $pegawai->domisili == 'Jawa Timur' ? 'selected' : '' }}>Jawa Timur</option>
-                                    <option value="Jawa Tengah" {{ $pegawai->domisili == 'Jawa Tengah' ? 'selected' : '' }}>Jawa Tengah</option>
-                                    <option value="Jawa Barat" {{ $pegawai->domisili == 'Jawa Barat' ? 'selected' : '' }}>Jawa Barat</option>
+                                    <option value="Jawa Timur" {{ $pegawai->domisili == 'Jawa Timur' ? 'selected' : '' }}>
+                                        Jawa Timur</option>
+                                    <option value="Jawa Tengah"
+                                        {{ $pegawai->domisili == 'Jawa Tengah' ? 'selected' : '' }}>Jawa Tengah</option>
+                                    <option value="Jawa Barat" {{ $pegawai->domisili == 'Jawa Barat' ? 'selected' : '' }}>
+                                        Jawa Barat</option>
                                 </select>
                                 @error('domisiliupdate')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -296,5 +308,44 @@
             </div>
         </div>
     @endforeach
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                "dom": '<"d-flex justify-content-between"lf>tip',
+                "language": {
+                    "search": '<div class="input-group px-2"><label class="me-2">Search:</label><input type="search" class="form-control form-control-sm border" placeholder="Search" aria-controls="myTable"></div>',
+                    "lengthMenu": '<div class="input-group px-2"><label class="me-2">Show:</label><select class="custom-select custom-select-sm form-control form-control-sm border">' +
+                        '<option value="10">10</option>' +
+                        '<option value="25">25</option>' +
+                        '<option value="50">50</option>' +
+                        '<option value="100">100</option>' +
+                        '</select> records per page</div>'
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            @if (Session::has('success'))
+                var successMessage = "{{ Session::get('success') }}";
+                console.log(successMessage); // Periksa apakah pesan berhasil diambil dari Session
+                alert(successMessage); // Tampilkan pesan sukses dengan alert
+            @endif
+            @if (Session::has('successedit'))
+                var successMessage = "{{ Session::get('successedit') }}";
+                console.log(successMessage); // Periksa apakah pesan berhasil diambil dari Session
+                alert(successMessage); // Tampilkan pesan sukses dengan alert
+            @endif
+            @if (Session::has('successhapus'))
+                var successMessage = "{{ Session::get('successhapus') }}";
+                console.log(successMessage); // Periksa apakah pesan berhasil diambil dari Session
+                alert(successMessage); // Tampilkan pesan sukses dengan alert
+            @endif
+        });
+    </script>
 @endsection
