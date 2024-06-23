@@ -22,16 +22,17 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreemployeeRequest $request)
+    public function store(StoreEmployeeRequest $request)
     {
         $validated = $request->validated();
         $imageName = time().'.'.$request->photo->getClientOriginalExtension();
         $request->photo->move(public_path('images'), $imageName);
         $validated['photo'] = $imageName;
-        employee::create($validated);
-
+        Employee::create($validated);
+    
         return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -47,7 +48,7 @@ class EmployeeController extends Controller
             'alamat' => $validated['alamatupdate'],
             'domisili' => $validated['domisiliupdate'],
         ]);
-        return redirect()->back()->with('success', 'Data Berhasil Update');
+        return redirect()->back()->with('successedit', 'Data Berhasil Update');
     }
 
     public function updateimage(Request $request, $id)

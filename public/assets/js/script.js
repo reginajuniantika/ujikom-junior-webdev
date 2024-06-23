@@ -90,19 +90,3 @@ function autoType() {
 }
 
 autoType();
-
-
-$(document).ready(function() {
-    $('#myTable').DataTable({
-        "dom": '<"d-flex justify-content-between"lf>tip',
-        "language": {
-            "search": '<div class="input-group px-2"><label class="me-2">Search:</label><input type="search" class="form-control form-control-sm border" placeholder="Search" aria-controls="myTable"></div>',
-            "lengthMenu": '<div class="input-group px-2"><label class="me-2">Show:</label><select class="custom-select custom-select-sm form-control form-control-sm border">' +
-                '<option value="10">10</option>' +
-                '<option value="25">25</option>' +
-                '<option value="50">50</option>' +
-                '<option value="100">100</option>' +
-                '</select> records per page</div>'
-        }
-    });
-});

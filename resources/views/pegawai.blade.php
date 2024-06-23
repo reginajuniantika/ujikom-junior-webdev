@@ -308,9 +308,11 @@
             </div>
         </div>
     @endforeach
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable({
@@ -325,6 +327,25 @@
                         '</select> records per page</div>'
                 }
             });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            @if (Session::has('success'))
+                var successMessage = "{{ Session::get('success') }}";
+                console.log(successMessage); // Periksa apakah pesan berhasil diambil dari Session
+                alert(successMessage); // Tampilkan pesan sukses dengan alert
+            @endif
+            @if (Session::has('successedit'))
+                var successMessage = "{{ Session::get('successedit') }}";
+                console.log(successMessage); // Periksa apakah pesan berhasil diambil dari Session
+                alert(successMessage); // Tampilkan pesan sukses dengan alert
+            @endif
+            @if (Session::has('successhapus'))
+                var successMessage = "{{ Session::get('successhapus') }}";
+                console.log(successMessage); // Periksa apakah pesan berhasil diambil dari Session
+                alert(successMessage); // Tampilkan pesan sukses dengan alert
+            @endif
         });
     </script>
 @endsection
