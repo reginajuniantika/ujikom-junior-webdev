@@ -59,3 +59,50 @@ document.addEventListener('DOMContentLoaded', function () {
         return regex.test(phone_number);
     }
 });
+
+
+var texts = [
+    "Smart",
+    "Inovatif",
+    "Professional"
+];
+
+
+var index = 0;
+var charIndex = 0;
+
+function autoType() {
+    var textElement = document.getElementById('text' + (index + 1));
+    var text = texts[index];
+
+    if (charIndex < text.length) {
+        textElement.textContent += text.charAt(charIndex);
+        charIndex++;
+        setTimeout(autoType, 100);
+    } else {
+        charIndex = 0;
+        setTimeout(function() {
+            textElement.textContent = '';
+            index = (index + 1) % texts.length;
+            autoType();
+        }, 1000);
+    }
+}
+
+autoType();
+
+
+$(document).ready(function() {
+    $('#myTable').DataTable({
+        "dom": '<"d-flex justify-content-between"lf>tip',
+        "language": {
+            "search": '<div class="input-group px-2"><label class="me-2">Search:</label><input type="search" class="form-control form-control-sm border" placeholder="Search" aria-controls="myTable"></div>',
+            "lengthMenu": '<div class="input-group px-2"><label class="me-2">Show:</label><select class="custom-select custom-select-sm form-control form-control-sm border">' +
+                '<option value="10">10</option>' +
+                '<option value="25">25</option>' +
+                '<option value="50">50</option>' +
+                '<option value="100">100</option>' +
+                '</select> records per page</div>'
+        }
+    });
+});
